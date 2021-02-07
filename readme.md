@@ -11,3 +11,7 @@ chrome://extensions/
 
 ### Step 2 - opening the page
 click on the extension in the top right corner of the window and click "Open Window Manager" and now you will be on the window manager page and can navigate as you please
+
+## TODO:
+
+- [ ] - Make windows in menu collapsible
