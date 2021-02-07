@@ -1,0 +1,80 @@
+:root {
+	--background-colors: #21212A;
+	--text-color: white;
+	--subtext-color: black;
+	--cardtitle-color: #3F3F50;
+	--cardsubtext-color: #7B7B9C;
+	--tab-active-color: #ACA0CC;
+	--tab-hover-color: #D7C9FF;
+	--window-hover-color: #9999C2;
+	--window-active-color: #7B7B9C;
+}
+
+body {
+    background-color: var(--background-colors);
+	color: var(--text-color);
+}
+
+
+.window {
+	border: 1px solid black;
+	border-radius: 5px;
+	margin: 15px 0;
+}
+
+.window-title {
+	width: 100%;
+	text-align: center;
+	background-color: var(--cardtitle-color);
+	border-radius: 5px 5px 0 0;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.window-title:hover {
+	background-color: var(--window-hover-color);
+	cursor: pointer;
+	color: black;
+}
+
+.window-active {
+	background-color: var(--window-active-color);
+}
+
+
+.window-tab {
+	color: var(--subtext-color);
+	background-color: var(--cardsubtext-color);
+	border-radius: 5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	margin: 5px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	display: flex; 
+	align-items: center; 
+	user-select: none;
+}
+
+.window-tab:hover {
+	background-color: var(--tab-hover-color);
+	cursor: pointer;	
+}
+
+.window-title-text {
+	margin: 0;
+	margin-left: 5px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.window-favcion{
+	width: 16px;
+	height: 16px;
+}
+
+.tab-active {
+	background-color: var(--tab-active-color);
+}

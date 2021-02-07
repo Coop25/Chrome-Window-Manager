@@ -1,0 +1,17 @@
+{
+    "manifest_version": 2,
+    "version": "0.0.1",
+    "name": "Window Manager",
+    "web_accessible_resources": [
+        "index.html"
+    ],
+    "permissions": [
+        "tabs",
+        "webNavigation",
+        "contextMenus"
+    ],
+    "background": {
+        "scripts": ["lib/eventPage.js","lib/contextMenu.js"],
+        "persistent": false
+      }
+}
