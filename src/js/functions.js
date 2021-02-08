@@ -33,3 +33,23 @@ function refresh_all(data){
     if(data) console.log(data)
     setInt();
 }
+
+
+
+//=================================================================================
+//                                ERROR: handling
+//=================================================================================
+// yes I know this is probably not the correct way to do this but its almost 11PM ill fix it later :)
+// TODO: actually fix this
+
+let expected_errors = [
+    "Uncaught Error: Extension context invalidated.",
+    "Uncaught TypeError: Cannot read property 'update' of undefined"
+]
+
+window.addEventListener('error', function (evt) {
+    if (expected_errors.includes(evt.message)){
+        evt.preventDefault();
+        location.reload();
+    }
+});
