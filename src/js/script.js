@@ -9,14 +9,14 @@ function setInt(){
   if (interval) clearInterval(interval);
   
   // get the data 
-  talk_back({ method: "getAll"}, (data)=>{
+  get_all((data)=>{
     console.log(data)
     document.getElementById('root').innerHTML = create_windows(data)
   })
 
   // set a new interval for every min
   interval = setInterval(()=>{
-    talk_back({ method: "getAll"}, (data)=>{
+    get_all((data)=>{
       console.log(data)
       document.getElementById('root').innerHTML = create_windows(data)
     })
