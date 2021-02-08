@@ -11,7 +11,7 @@
         "contextMenus"
     ],
     "background": {
-        "scripts": ["lib/eventPage.js","lib/contextMenu.js"],
+        "scripts": ["lib/contextMenu.js"],
         "persistent": false
       }
 }

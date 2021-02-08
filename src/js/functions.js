@@ -1,23 +1,27 @@
 function open_window(window_id){
-    talk_back({ 
-        method      : "top_window",
-        window_id   : parseInt(window_id)
-    }, (data)=>refresh_all(data))
+        chrome.windows.update(
+            parseInt(window_id), 
+            { focused: true }, 
+            refresh_all)
 }
 
 function open_tab(tab_id){
-    talk_back({ 
-        method   : "top_tab",
-        tab_id   : parseInt(tab_id)
-    }, (data)=>refresh_all(data))
+    chrome.tabs.update(
+        parseInt(tab_id), 
+        { active: true }, 
+        refresh_all)
 }
 
 function open_tab_window(tab_id, window_id){
-    talk_back({ 
-        method      : "top_window",
-        window_id   : parseInt(window_id),
-        tab_id      : parseInt(tab_id)
-    }, (data)=>refresh_all(data))
+    chrome.windows.update(parseInt(window_id), { focused: true }, () =>{
+        chrome.tabs.update(parseInt(tab_id), { active: true }, refresh_all)
+    })
+}
+
+function get_all(cb){
+    chrome.windows.getAll({ populate : true }, (window_list)=>{
+        cb(window_list)
+    })
 }
 
 function refresh_all(data){
