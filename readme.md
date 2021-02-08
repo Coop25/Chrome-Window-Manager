@@ -17,4 +17,4 @@ click on the extension in the top right corner of the window and click "Open Win
 - [ ] - Make windows in menu collapsible
 - [ ] - Ability to close tabs 
 - [ ] - add better update method
-- [ ] - fix issue [#1](https://github.com/Coop25/Chrome-Window-Manager/issues/1)
+- [X] - fix issue [#1](https://github.com/Coop25/Chrome-Window-Manager/issues/1)
