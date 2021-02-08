@@ -15,3 +15,5 @@ click on the extension in the top right corner of the window and click "Open Win
 ## TODO:
 
 - [ ] - Make windows in menu collapsible
+- [ ] - Ability to close tabs 
+- [ ] - add better update method
