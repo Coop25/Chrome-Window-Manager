@@ -12,6 +12,6 @@
     ],
     "background": {
         "scripts": ["lib/contextMenu.js"],
-        "persistent": false
+        "persistent": true
       }
 }
