@@ -31,7 +31,10 @@ function get_all(cb){
 
 function refresh_all(data){
     if(data) console.log(data)
-    setInt();
+    get_all((data)=>{
+        console.log(data)
+        create_windows(data)
+    })
 }
 
 
