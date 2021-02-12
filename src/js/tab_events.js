@@ -15,8 +15,8 @@ chrome.tabs.onCreated.addListener((tab)=>{
     }
 })
 
-chrome.tabs.onRemoved.addListener((tab_id, { isWindowClosing, windowId })=>{
-    let html_window = document.getElementById(`${windowId}`);
+chrome.tabs.onRemoved.addListener((tab_id, { isWindowClosing, windowId: window_id })=>{
+    let html_window = document.getElementById(`${window_id}`);
     let tab_html = document.getElementById(`${tab_id}`);
     if (isWindowClosing){
         html_window.remove();
@@ -28,7 +28,22 @@ chrome.tabs.onRemoved.addListener((tab_id, { isWindowClosing, windowId })=>{
 chrome.tabs.onAttached.addListener((tab_id, {newPosition, newWindowId})=>{
     let html_window = document.getElementById(`${newWindowId}`);
     let tab_html = document.getElementById(`${tab_id}`);
-    html_window.insertBefore(tab_html, html_window.children[newPosition === 0 ? 1 : newPosition]);
+
+    if (newPosition + 2 === html_window.children.length ){
+        html_window.appendChild(tab_html)
+    }
+    html_window.insertBefore(tab_html, html_window.children[newPosition === 0 ? 1 : newPosition + 1]);
+})
+
+chrome.tabs.onMoved.addListener((tab_id, {fromIndex, toIndex, windowId: window_id})=>{
+    let html_window = document.getElementById(`${window_id}`);
+    let tab_html = document.getElementById(`${tab_id}`);
+
+
+    if (toIndex + 2 === html_window.children.length){
+        return html_window.appendChild(tab_html)
+    }
+    html_window.insertBefore(tab_html, html_window.children[toIndex === 0 ? 1 : toIndex + 1]);
 })
 
 
