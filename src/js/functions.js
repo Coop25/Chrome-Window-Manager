@@ -1,19 +1,19 @@
 function open_window(window_id){
-        chrome.windows.update(parseInt(window_id), { focused: true }, refresh_all)
+        chrome.windows.update(parseInt(window_id), { focused: true }, callback)
 }
 
 function open_tab(tab_id){
-    chrome.tabs.update(parseInt(tab_id), { active: true }, refresh_all)
+    chrome.tabs.update(parseInt(tab_id), { active: true }, callback)
 }
 
 
 function remove_tab(tab_id){
-    chrome.tabs.remove(parseInt(tab_id), refresh_all)
+    chrome.tabs.remove(parseInt(tab_id), callback)
 }
 
 function open_tab_window(tab_id, window_id){
     chrome.windows.update(parseInt(window_id), { focused: true }, () =>{
-        chrome.tabs.update(parseInt(tab_id), { active: true }, refresh_all)
+        chrome.tabs.update(parseInt(tab_id), { active: true }, callback)
     })
 }
 
@@ -31,7 +31,18 @@ function get_all(cb){
 
 function refresh_all(data){
     if(data) console.log(data)
-    setInt();
+    get_all((data)=>{
+        console.log(data)
+        create_windows(data)
+    })
+}
+
+function callback(data){
+    // if(data) console.log(data)
+    // get_all((data)=>{
+    //     console.log(data)
+    //     create_windows(data)
+    // })
 }
 
 
