@@ -1,5 +1,5 @@
 chrome.tabs.onUpdated.addListener((tab_id, change, tab)=>{
-     let tab_html = document.getElementById(`${tab.id}`)
+    let tab_html = document.getElementById(`${tab.id}`)
     if ((change.status === "complete" || change.audible === false || change.audible || change.title) && tab_html){
         update_tab(tab, tab_html)
     }
@@ -46,6 +46,31 @@ chrome.tabs.onMoved.addListener((tab_id, {fromIndex, toIndex, windowId: window_i
     html_window.insertBefore(tab_html, html_window.children[toIndex === 0 ? 1 : toIndex + 1]);
 })
 
+chrome.tabs.onActivated.addListener(({tabId: tab_id, windowId: window_id})=>{
+    let window_html         = document.getElementById(`${window_id}`);
+    let prev_active_id      = window_html.getAttribute("active-tab");
+    let prev_active         = document.getElementById(`${prev_active_id}`);
+    let tab_div             = document.getElementById(`${tab_id}`)
+    if (prev_active) {
+        prev_active.classList = "window-tab";
+    }
+    window_html.setAttribute("active-tab", tab_id);
+    tab_div.classList   = "window-tab tab-active";
+
+    let prev_active_window      = root.getAttribute("active-window");
+
+    if (parseInt(prev_active_window) !== window_id) {
+        let prev_active_html_window = document.getElementById(`${prev_active_window}`);
+        let html_window = document.getElementById(`${window_id}`);
+
+        if (prev_active_html_window) {
+            prev_active_html_window.children[0].classList = "window-title"
+        }
+        html_window.children[0].classList = "window-title window-active"
+        root.setAttribute("active-window", `${window_id}`)
+    }
+})
+
 
 // ==============================================================================
 //                                 Window Events
@@ -67,9 +92,9 @@ chrome.windows.onFocusChanged.addListener((window_id)=>{
     let prev_active_html_window = document.getElementById(`${prev_active_window}`);
     let html_window             = document.getElementById(`${window_id}`);
 
-    if (prev_active_html_window) {
+    if (prev_active_html_window && parseInt(prev_active_window) !== window_id) {
         prev_active_html_window.children[0].classList   = "window-title"
-        html_window.children[0].classList               = "window-title window-active"
     }
+    html_window.children[0].classList               = "window-title window-active"
     root.setAttribute("active-window", `${window_id}`)
 })
