@@ -17,16 +17,18 @@ function open_tab_window(tab_id, window_id){
     })
 }
 
-function get_all(cb){
-    chrome.windows.getAll({ populate : true }, (window_list)=>{
-        cb(window_list)
-    })
+function move_tab_window(tab_id, index, window_id){
+    chrome.tabs.move(tab_id, {index, windowId: window_id}, callback)
 }
 
 function get_all(cb){
     chrome.windows.getAll({ populate : true }, (window_list)=>{
         cb(window_list)
     })
+}
+
+function create_new_tab(window_id) {
+    chrome.tabs.create({ windowId : window_id }, callback)
 }
 
 function refresh_all(data){
@@ -38,11 +40,7 @@ function refresh_all(data){
 }
 
 function callback(data){
-    // if(data) console.log(data)
-    // get_all((data)=>{
-    //     console.log(data)
-    //     create_windows(data)
-    // })
+    // pretty much all of the chrome functions need a callback so this is here just in case
 }
 
 
