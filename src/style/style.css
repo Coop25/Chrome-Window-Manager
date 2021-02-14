@@ -20,6 +20,7 @@ body {
 	border: 1px solid black;
 	border-radius: 5px;
 	margin: 15px 0;
+	position: relative;
 }
 
 .window-title {
@@ -77,4 +78,36 @@ body {
 
 .tab-active {
 	background-color: var(--tab-active-color);
+}
+
+.dragging {
+	opacity: .5;
+}
+
+.draggable {
+	cursor: move;
+}
+
+.hidden {
+	display: none;
+}
+
+.new-tab-button {
+    position: absolute;
+    top: -10px;
+    right: -6px;
+    padding: 2px;
+    font-size: 10px;
+    height: 14px;
+    width: 14px;
+    padding-bottom: 3.4px;
+    border-radius: 5px;
+    background-color: #353740;
+	cursor: pointer;
+	user-select: none;
+	box-shadow: -10px 4px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.473);
+}
+
+.new-tab-button:hover {
+    background-color: #6A6E80;
 }
